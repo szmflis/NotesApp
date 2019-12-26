@@ -1,0 +1,6 @@
+delete http://localhost:3001/api/users/user/5d6e9f6d70bc2318f9a92dcc
+Content-Type: application/json
+
+{
+    "password": "qweqweqwe1"
+}

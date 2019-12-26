@@ -1,0 +1,8 @@
+post http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyMTIzIiwiaWQiOiI1ZDZlYTA1YzMzZmVjZTIxOTI0YzI1OTQiLCJpYXQiOjE1Njc1MzExMDd9.VbFmNrTqXwNdX5_SCzQ8_JLibATcKIFNeNBnyMs4dWI
+
+{
+  "content": "This note is to be deleted 1",
+  "dueDate": "2012/04/30 10:14:23"
+}

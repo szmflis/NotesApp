@@ -1,0 +1,1 @@
+get http://localhost:3001/api/users/user/5d6ea05c33fece21924c2594/notes

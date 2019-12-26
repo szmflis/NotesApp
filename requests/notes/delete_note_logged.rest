@@ -1,0 +1,2 @@
+delete http://localhost:3001/api/notes/5d6a70802306f41f7efe4635
+Authorization:bearer eyJhbGciOwJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyMTIzIiwiaWQiOiI1ZDZhNmZkYzIzMDZmNDFmN2VmZTQ2MzMiLCJpYXQiOjE1NjcyNTY1NTV9.xE7PkZOMra-wYPPFEcTae-qqZBThEvGqYQWhJvGgmnc
