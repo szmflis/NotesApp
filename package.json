@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "front": "npm start --prefix front",
-    "server": "node index.js",
+    "start": "node index.js",
     "start-prod": "cross-env NODE_ENV=production node index.js",
-    "start-dev": "concurrently \"npm run server\" \"npm run front\"",
+    "start-dev": "concurrently \"npm run start\" \"npm run front\"",
     "build-front-linux": "cd front && npm run-script build && cd .. && npm run start-prod",
     "heroku-postbuild": "npm install --prefix front && npm run build --prefix front"
   },
