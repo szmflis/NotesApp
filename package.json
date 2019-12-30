@@ -5,18 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-prod": "cross-env NODE_ENV=production node index.js",
     "front": "npm start --prefix front",
     "server": "node index.js",
+    "start-prod": "cross-env NODE_ENV=production node index.js",
     "start-dev": "concurrently \"npm run server\" \"npm run front\"",
-    "build-front-linux": "rm -rf build ; cd Notes-App-Frontend && npm run-script build && mv build ../ && cd ../ && npm run start-prod",
-    "build-front-windows": "del build & cd Notes-App-Frontend && npm run-script build"
+    "build-front-linux": "cd front && npm run-script build && cd .. && npm run start-prod",
+    "heroku-postbuild": "npm install --prefix front && npm run build --prefix front"
   },
   "author": "szymsi",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.0.2",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dotenv": "^8.1.0",
