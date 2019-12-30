@@ -7,7 +7,7 @@ import Help from './components/Help'
 import Contact from './components/Contact'
 import {connect}from 'react-redux'
 import {setUser} from './reducers/user-reducer'
-import Notes from './components/notepage/Notes.js.js'
+import Notes from './components/notepage/Notes.js'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 

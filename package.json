@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-prod": "cross-env NODE_ENV=production node index.js",
-    "client": "npm start --prefix Notes-App-Frontend",
+    "front": "npm start --prefix front",
     "server": "node index.js",
-    "start-dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start-dev": "concurrently \"npm run server\" \"npm run front\"",
     "build-front-linux": "rm -rf build ; cd Notes-App-Frontend && npm run-script build && mv build ../ && cd ../ && npm run start-prod",
     "build-front-windows": "del build & cd Notes-App-Frontend && npm run-script build"
   },
