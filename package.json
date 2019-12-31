@@ -1,6 +1,9 @@
 {
   "name": "notes-backend",
   "version": "0.0.1",
+  "engines": {
+    "npm": "12.14.0"
+  },
   "description": "backend for notes application",
   "main": "index.js",
   "scripts": {
