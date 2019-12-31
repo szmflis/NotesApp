@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'semantic-ui-css/semantic.css';
 import {createStore, combineReducers} from 'redux'
 import noteReducer from './reducers/note-reducer'
 import userReduer from './reducers/user-reducer'

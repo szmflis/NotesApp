@@ -1,6 +1,6 @@
 import React, {useEffect}from 'react'
 import {BrowserRouter as Router,Route}from 'react-router-dom'
-import Home from './components/Home'
+import Home from './components/Home/Home'
 import Register from './components/Register'
 import Login from './components/Login'
 import Help from './components/Help'
@@ -9,7 +9,6 @@ import {connect}from 'react-redux'
 import {setUser} from './reducers/user-reducer'
 import Notes from './components/notepage/Notes.js'
 import Navbar from './components/Navbar/Navbar'
-import Footer from './components/Footer/Footer'
 
 
 const App = (props) => {
@@ -34,7 +33,6 @@ const App = (props) => {
         <Route exact path="/contact" render={() => <Contact/>}/>
         <Route exact path="/notes" render={() => <Notes/>}/>
 
-        <Footer/>
       </Router>
 
   )
