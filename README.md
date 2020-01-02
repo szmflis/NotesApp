@@ -7,8 +7,7 @@ https://note-app-fs.herokuapp.com/
 Currently looks as intended only on desktop. 
 
 ###### Technologies used
-React, Redux, CSS on the frontend
-Serverside Node.js with MongoDB
+React, Redux, CSS on the frontend, Serverside Node.js with MongoDB
 
 ## To run on your machine
 
