@@ -15,5 +15,8 @@ React, Redux, CSS on the frontend, Serverside Node.js with MongoDB
 git clone https://github.com/szmflis/NotesApp.git
 cd NotesApp
 npm install
+cd front
+npm install
+cd ..
 npm run start-dev
 ```
