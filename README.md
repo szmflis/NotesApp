@@ -20,3 +20,10 @@ npm install
 cd ..
 npm run start-dev
 ```
+
+To actually add notes etc, either register or login using:
+
+  Username: testuser123 
+  Password: qweqweqwe1
+
+And go into Your Notes - blue button in the center of sidebar.
