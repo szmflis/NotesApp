@@ -6,13 +6,13 @@ import Footer from './Footer'
 
 const Home = (props) => {
 
-  const HomeGrid = styled.div`
+    const HomeGrid = styled.div `
     display: grid;
     grid-template-columns: 35% 65%;
     grid-template-rows: auto auto;
   `
 
-  const BackgroundPic = styled.div`
+    const BackgroundPic = styled.div `
     background-image: url(${laptop});
     background-size: cover;
     
@@ -21,13 +21,13 @@ const Home = (props) => {
     grid-row: 1/2;
   `
 
-  const TextOverBackground = styled.div`
+    const TextOverBackground = styled.div `
     font-size: 2.5em;
     color: white;
     padding: 120px 0px 0px 120px
   `
 
-  const Paragraph = styled.p`
+    const Paragraph = styled.p `
     line-height: 12px;
   `
 

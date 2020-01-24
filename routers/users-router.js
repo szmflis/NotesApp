@@ -52,9 +52,9 @@ usersRouter.delete('/user/:id', async (request, response, next) => {
     const userToDelete = await User.findById(request.params.id)
 
     try {
-        const correctPassword = userToDelete === null
-            ? false
-            : await bcrypt.compare(body.password, userToDelete.passwordHash)
+        const correctPassword = userToDelete === null ?
+            false :
+            await bcrypt.compare(body.password, userToDelete.passwordHash)
 
         if (!(userToDelete && correctPassword)) {
             return response.status(401).json({

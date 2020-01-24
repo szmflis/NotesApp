@@ -2,7 +2,9 @@ const notesRouter = require('express').Router()
 const Note = require('../models/note')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
-const { getTokenFrom } = require('./token-helper')
+const {
+    getTokenFrom
+} = require('./token-helper')
 
 notesRouter.get('/', async (request, response) => {
     const notes = await Note.find({})
@@ -21,7 +23,9 @@ notesRouter.delete('/:id', async (request, response, next) => {
         const decodedToken = jwt.verify(token, process.env.SECRET)
 
         if (!token || !decodedToken.id) {
-            return response.status(401).json({ error: 'Token missing or invalid' })
+            return response.status(401).json({
+                error: 'Token missing or invalid'
+            })
         }
 
         const user = await User.findById(decodedToken.id)
@@ -45,7 +49,9 @@ notesRouter.post('/', async (request, response, next) => {
         const decodedToken = jwt.verify(token, process.env.SECRET)
 
         if (!token || !decodedToken.id) {
-            return response.status(401).json({ error: 'Token missing or invalid' })
+            return response.status(401).json({
+                error: 'Token missing or invalid'
+            })
         }
 
         const user = await User.findById(decodedToken.id)
@@ -74,7 +80,9 @@ notesRouter.put('/:id', async (request, response, next) => {
         const decodedToken = jwt.verify(token, process.env.SECRET)
 
         if (!token || !decodedToken.id) {
-            return response.status(401).json({ error: 'Token missing or invalid' })
+            return response.status(401).json({
+                error: 'Token missing or invalid'
+            })
         }
 
         const noteToBeEdited = await Note.findById(request.params.id)
@@ -84,7 +92,9 @@ notesRouter.put('/:id', async (request, response, next) => {
             dueDate: body.dueDate || noteToBeEdited.dueDate
         }
 
-        const updatedNote = await Note.findByIdAndUpdate(request.params.id, note, { new: true })
+        const updatedNote = await Note.findByIdAndUpdate(request.params.id, note, {
+            new: true
+        })
 
         response.json(updatedNote.toJSON())
     } catch (exception) {
