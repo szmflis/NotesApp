@@ -2,7 +2,7 @@ import React, {useEffect}from 'react'
 import {BrowserRouter as Router,Route}from 'react-router-dom'
 import Home from './components/Home/Home'
 import Register from './components/Register'
-import Login from './components/Login'
+import Login from './components/Login/Login'
 import Help from './components/Help'
 import Contact from './components/Contact'
 import {connect}from 'react-redux'
@@ -22,7 +22,6 @@ const App = (props) => {
   }, [])
 
   return(
-
       <Router>
         <Navbar/>
 
@@ -34,7 +33,6 @@ const App = (props) => {
         <Route exact path="/notes" render={() => <Notes/>}/>
 
       </Router>
-
   )
 }
 
@@ -49,3 +47,8 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
+
+/*TODO:
+  login style
+  fix your notes style on no notes/no login
+*/

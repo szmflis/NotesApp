@@ -1,9 +1,10 @@
 import React, {useState}from 'react'
-import loginService from '../services/login'
+import loginService from '../../services/login'
 import {connect}from 'react-redux'
-import noteService from '../services/notes'
-import {setUser}from '../reducers/user-reducer'
+import noteService from '../../services/notes'
+import {setUser}from '../../reducers/user-reducer'
 import {withRouter}from 'react-router-dom'
+import {Container, Header, Input, Label, ButtonRow, SubmitButton} from './Login_styled_comp'
 
 const Login = (props) => {
 
@@ -34,27 +35,31 @@ const Login = (props) => {
 
 
   return(
-    <form onSubmit={handleLogin}>
-      <div>
-        username
-        <input
+    <Container>
+      <Header>Please login</Header>
+      <form onSubmit={handleLogin}>
+        <Label>Username</Label>
+        <Input
           type="text"
           value={username}
           name="Username"
           onChange={({target}) => setUsername(target.value)}
-          />
-      </div>
-      <div>
-        password
-        <input
+        />
+        
+        <Label>Password</Label>
+        <Input
           type="password"
           value={password}
           name="Password"
           onChange={({target}) => setPassword(target.value)}
-          />
-      </div>
-      <button type="submit">login</button>
-    </form>
+        />
+        <ButtonRow>
+          <SubmitButton type="submit">
+            login
+          </SubmitButton>
+        </ButtonRow>
+      </form>
+    </Container>
   )
 }
 

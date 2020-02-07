@@ -9,6 +9,9 @@ from './always-visible-components/always-visible-styled-components'
 import {LogIn, SignUp, YourAccount, Logout}
 from './conditional-components/conditional-styled-components'
 
+import {initializeNotes} from '../../reducers/note-reducer'
+import { FaArrowDown } from 'react-icons/fa'
+
 const Navbar = (props) => {
 
   const NavMain = styled.nav`
@@ -47,6 +50,7 @@ const Navbar = (props) => {
 
   const handleLogout = (event) => {
     props.setUser(null)
+    props.initializeNotes([])
     window.localStorage.removeItem('loggedUser')
   }
 
@@ -63,12 +67,14 @@ const Navbar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    loggedUser: state.user
+    loggedUser: state.user,
+    notes: state.notes
   }
 }
 
 const mapDispatchToProps = {
-  setUser
+  setUser,
+  initializeNotes
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

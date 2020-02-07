@@ -18,7 +18,7 @@ const Sidebar = (props) => {
   const conditionalNotesRender = () => {
     if (props.loggedUser.user === null){
       return (
-        <p>Notes will not be saved unless You are logged in.</p>
+        <p style={{fontSize: 20}}>Notes will not be saved unless You are logged in.</p>
       )
     } else {
       return (
