@@ -6,7 +6,6 @@ import  {
   SidebarNotesContainer,
   SingleNoteContainerSidebar,
   SingleNoteTextSidebar,
-  SidebarBottom,
   StyledTrashcan
 } from './StyledSidebarComponents'
 import {deleteNoteRedux} from '../../../reducers/note-reducer'

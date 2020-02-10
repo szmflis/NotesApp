@@ -21,8 +21,6 @@ const Login = (props) => {
       window.localStorage.setItem(
           'loggedUser', JSON.stringify(user)
         )
-        // console.log(user)
-
       noteService.setToken(user.token)
       props.setUser(user)
       setUsername('')

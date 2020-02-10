@@ -10,7 +10,6 @@ import {LogIn, SignUp, YourAccount, Logout}
 from './conditional-components/conditional-styled-components'
 
 import {initializeNotes} from '../../reducers/note-reducer'
-import { FaArrowDown } from 'react-icons/fa'
 
 const Navbar = (props) => {
 
