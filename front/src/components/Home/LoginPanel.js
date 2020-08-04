@@ -1,13 +1,34 @@
-import React,{useState} from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
+import loginService from '../../services/login'
+import noteService from '../../services/notes'
+import { withRouter } from 'react-router-dom'
+import { setUser } from '../../reducers/user-reducer'
 
 const LoginPanel = (props) => {
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-
-    const handleLogin = async(event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
+
+        const username = event.target.username.value
+        const password = event.target.password.value
+
+        try {
+            const user = await loginService.login({
+                username, password
+            })
+
+            window.localStorage.setItem(
+                'loggedUser', JSON.stringify(user)
+            )
+
+            noteService.setToken(user.token)
+            props.setUser(user)
+            props.history.push('/')
+        } catch (exception) {
+            console.log(exception)
+        }
     }
 
     const Container = styled.div`
@@ -63,12 +84,16 @@ const LoginPanel = (props) => {
     return (
         <Container>
             <Header>Please login</Header>
-            <form>
+            <form onSubmit={handleLogin}>
                 <Label>Username</Label>
-                <Input
+                <Input 
+                    name="username"
+                    type="text"
                     />
                 <Label>Password</Label>
-                <Input
+                <Input 
+                    name="password"
+                    type="password"
                     />
                 <ButtonRow>
                     <SubmitButton type="submit">
@@ -80,4 +105,8 @@ const LoginPanel = (props) => {
     )
 }
 
-export default LoginPanel
+const mapDispatchToProps = {
+    setUser
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(LoginPanel))

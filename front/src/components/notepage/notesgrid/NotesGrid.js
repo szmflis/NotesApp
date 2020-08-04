@@ -31,7 +31,7 @@ const NotesGrid = (props) => {
   const conditionalRender = () => {
     return props.notes.map(noteObj => {
       return (
-        <SingleTileContainer>
+        <SingleTileContainer key={noteObj.id}>
           <SingleTileText>{noteObj.content}</SingleTileText>
           <SingleTileDate>
             {moment(noteObj.date).format('MMM Do YYYY, h:mm:ss')}

@@ -23,7 +23,7 @@ const Sidebar = (props) => {
       return (
         <SidebarNotesContainer>
           {props.notes.map(note =>
-            <SingleNoteContainerSidebar>
+            <SingleNoteContainerSidebar key={note.id}>
               <SingleNoteTextSidebar>{note.content}</SingleNoteTextSidebar>
               <StyledTrashcan onClick={() => handleNoteDel(note.id)}/>
             </SingleNoteContainerSidebar>)}

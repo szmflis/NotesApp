@@ -14,9 +14,12 @@ const Home = (props) => {
 
     const BackgroundPic = styled.div `
     background-image: url(${laptop});
-    background-size: cover;
     
-    height: 1200px;
+    
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
     grid-column: 1/3;
     grid-row: 1/2;
   `
@@ -25,6 +28,7 @@ const Home = (props) => {
     font-size: 2.5em;
     color: white;
     padding: 120px 0px 0px 120px
+    
   `
 
     const Paragraph = styled.p `

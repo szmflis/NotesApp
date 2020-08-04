@@ -9,7 +9,7 @@ export const StyledNotesFlexbox = styled.div`
   align-content: flex-start;
 `
 
-export const SingleTileContainer = styled.div`
+export const SingleTileContainer = styled.li`
   display: grid;
   grid-template-rows: auto 30px;
 

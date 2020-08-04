@@ -48,7 +48,7 @@ export const SidebarNotesContainer = styled.div`
   align-content: start;
 `
 
-export const SingleNoteContainerSidebar = styled.div`
+export const SingleNoteContainerSidebar = styled.li`
   color: #000000
 
   white-space: nowrap;
