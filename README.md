@@ -2,7 +2,7 @@
 
 Made for practice with React and such.
 
-https://note-app-fs.herokuapp.com/
+https://notes-app-sf98.herokuapp.com/
 
 Currently looks as intended only on desktop. 
 
