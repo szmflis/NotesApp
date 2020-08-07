@@ -11,6 +11,7 @@ const loginRouter   = require('./routers/login-router')
 
 const {requestLogger, errorHandler, unknownEndpoint} = require('./utils/middleware/middleware')
 
+mongoose.set('useFindAndModify', false)
 mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true})
     .then(() => {
         console.log('connected to MongoDB')
