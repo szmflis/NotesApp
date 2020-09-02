@@ -8,9 +8,10 @@ export const Box = styled.div`
   justify-content: ${({ justify }) => justify || 'flex-start'};
   background: ${({ color, theme }) => color || theme.colors.grey};
   width: ${({ width }) => width || `${theme.sizes[7]}px`};
-  height: ${({ height }) => height || `auto`};
+  height: ${({ height }) => height || 'auto'};
   padding: ${({ padding }) => padding || '10px'};
   margin: ${({ margin }) => margin || '10px'};
   border-radius: ${({ radius }) => radius || '5px'};
   opacity: ${({ opacity }) => opacity || 1};
+  text-align: ${({ textAlign }) => textAlign};
 `
