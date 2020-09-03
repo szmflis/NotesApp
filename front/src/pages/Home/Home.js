@@ -3,8 +3,12 @@ import styled from 'styled-components'
 import laptop from '../../assets/workspace.jpg'
 import { theme } from '../../utils/theme'
 import { P } from '../../components/P/P'
+import { Box } from '../../components/Box/Box'
+import { Button } from '../../components/Button/Button'
+import { Span } from '../../components/Span/Span'
 import HowToBox from './HowToBox'
 import StackBox from './StackBox'
+import Contact from './Contact'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -47,8 +51,36 @@ const Home = () => {
           </P>
         </TextWrapper>
       </BackgroundPicture>
-      <HowToBox />
-      <StackBox />
+      <Box width="auto" color={theme.colors.white} direction="row" margin="0">
+        <Box width="auto" color={theme.colors.white} margin="0" padding="0">
+          <HowToBox />
+          <Contact />
+          <Box width="50rem" justify="center" align="center" textAlign="center">
+            <P fontSize={theme.fontSize.bigger} borderBottom="1px solid grey" padding="2px" margin="0px 0px 7px 0px">
+              Lorem ipsum
+            </P>
+            <Span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nunc vel ipsum tempus suscipit. Proin consequat felis vitae est efficitur sagittis. Nullam eget metus eu felis porttitor ullamcorper. Maecenas malesuada lorem justo, vitae condimentum nibh ultricies at. Cras posuere tortor lorem, quis elementum dui pharetra sed.</Span>
+          </Box>
+        </Box>
+        <Box width="auto" color={theme.colors.white} margin="0" padding="0">
+          <StackBox />
+          <Box width="50rem" justify="center" align="center" textAlign="center">
+            <P fontSize={theme.fontSize.bigger} borderBottom="1px solid grey" padding="2px" margin="0px 0px 7px 0px">
+              Lorem ipsum
+            </P>
+            <Span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nunc vel ipsum tempus suscipit. Proin consequat felis vitae est efficitur sagittis. Nullam eget metus eu felis porttitor ullamcorper. Maecenas malesuada lorem justo, vitae condimentum nibh ultricies at. Cras posuere tortor lorem, quis elementum dui pharetra sed.</Span>
+            <Box color={theme.colors.white} opacity={0.5}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nunc vel ipsum tempus suscipit. Proin consequat felis vitae est efficitur sagittis. Nullam eget metus eu felis porttitor ullamcorper. Maecenas malesuada lorem justo, vitae condimentum nibh ultricies at. Cras posuere tortor lorem, quis elementum dui pharetra sed.
+            </Box>
+            <Button>
+              <P fontSize={theme.fontSize.big} color={theme.colors.white}>
+                Do nothing
+              </P>
+            </Button>
+          </Box>
+        </Box>
+      </Box>
+
     </StyledWrapper>
   )
 }
