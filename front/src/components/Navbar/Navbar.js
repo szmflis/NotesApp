@@ -1,79 +1,48 @@
 import React from 'react'
 import styled from 'styled-components'
-import {connect} from 'react-redux'
-import {setUser} from '../../reducers/user-reducer'
+import { connect } from 'react-redux'
+import { setUser } from '../../reducers/user-reducer'
+import { initializeNotes } from '../../reducers/note-reducer'
+import { theme } from '../../utils/theme'
+import { P } from '../P/P'
+import { Box } from '../Box/Box'
+import { H3 } from '../H3/H3'
 
-import {Logo, YourNotesBox, YourNotesText, YourNotesContainer}
-from './always-visible-components/always-visible-styled-components'
+const StyledNavbar = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #4d4d4d;
+  padding: 15px 15px 8px 15px;
+  width: 100%;
+`
 
-import {LogIn, SignUp, YourAccount, Logout}
-from './conditional-components/conditional-styled-components'
+const NavElement = styled.a`
+  cursor: pointer;
+  color: ${theme.colors.white};
+  padding-bottom: 7px;
+  font-size: ${theme.fontSize.big};
 
-import {initializeNotes} from '../../reducers/note-reducer'
+  background: linear-gradient(0deg,blue,blue) bottom left no-repeat;
+  background-size: 0px 3px;
+  transition: 0.5s;
+  font-weight: ${theme.fontWeight.bold};
+
+  &:hover {
+    color: ${theme.colors.white};
+    background-size: 100% 3px;
+    opacity: 1;
+  }
+`
 
 const Navbar = (props) => {
-
-  const NavMain = styled.nav`
-    background-color: #212121;
-    width: 100%;
-    height: 55px;
-    display: grid;
-    grid-template-columns: 15% 12% 12% 20% auto;
-    grid-template-rows: 100%;
-  `
-
-  const NavRight = styled.div`
-    grid-column: 6/7;
-    display: grid;
-    grid-template-columns: 20% auto auto;
-    grid-template-rows: 100%;
-  `
-
-  const conditionalRender = () => {
-    if (props.loggedUser.user === null) {
-      return (
-        <NavRight>
-          <LogIn to='/login'>Log In</LogIn>
-          <SignUp to='/register'>Sign Up</SignUp>
-        </NavRight>
-        )
-    } else {
-      return (
-        <NavRight>
-          <YourAccount to='/account'>Your Account</YourAccount>
-          <Logout to='/' onClick={handleLogout}>Logout</Logout>
-        </NavRight>
-      )
-    }
-  }
-
-  const handleLogout = (event) => {
-    props.setUser(null)
-    props.initializeNotes([])
-    window.localStorage.removeItem('loggedUser')
-  }
-
   return (
-    <NavMain>
-      <Logo to='/'>LOGOPLACE</Logo>
-      <YourNotesContainer>
-        <YourNotesBox to='/notes'><YourNotesText>Your Notes</YourNotesText></YourNotesBox>
-      </YourNotesContainer>
-      {conditionalRender()}
-    </NavMain>
+    <StyledNavbar>
+      <NavElement>LOGOPLACE</NavElement>
+      <NavElement>Your Notes</NavElement>
+      <NavElement>Signup</NavElement>
+    </StyledNavbar>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loggedUser: state.user,
-    notes: state.notes
-  }
-}
-
-const mapDispatchToProps = {
-  setUser,
-  initializeNotes
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default Navbar

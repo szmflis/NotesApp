@@ -14,4 +14,5 @@ export const Box = styled.div`
   border-radius: ${({ radius }) => radius || '5px'};
   opacity: ${({ opacity }) => opacity || 1};
   text-align: ${({ textAlign }) => textAlign};
+  border: ${({ border }) => border};
 `

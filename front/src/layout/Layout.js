@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${theme.fontSizeBaseRem};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: ${theme.fontColorBase}
+    color: ${theme.fontColorBase};
   }
 
   *, *::before, *::after {
