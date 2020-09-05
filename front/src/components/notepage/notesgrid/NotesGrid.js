@@ -1,16 +1,17 @@
 import React from 'react'
-import {StyledNotesFlexbox, SingleTileContainer, SingleTileText, SingleTileDate,
-AddNoteTile, AddNoteTileTextField, AddNotePlusSign} from './StyledNotesGridComponents'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import moment from 'moment'
-import {addNote} from '../../../services/notes'
-import {addNoteRedux} from '../../../reducers/note-reducer'
+import {
+  StyledNotesFlexbox, SingleTileContainer, SingleTileText, SingleTileDate,
+  AddNoteTile, AddNoteTileTextField, AddNotePlusSign
+} from './StyledNotesGridComponents'
+import { addNote } from '../../../services/notes'
+import { addNoteRedux } from '../../../reducers/note-reducer'
 
 const NotesGrid = (props) => {
-
   const handleNoteAdd = async (event) => {
     event.preventDefault()
-    if (props.loggedUser.user == null){
+    if (props.loggedUser.user == null) {
       props.addNoteRedux({
         content: event.target.noteText.value
       })
@@ -38,27 +39,23 @@ const NotesGrid = (props) => {
           </SingleTileDate>
         </SingleTileContainer>
       )
-    }
-    )
+    })
   }
-
-  
 
   return (
     <StyledNotesFlexbox>
       {conditionalRender()}
 
       <AddNoteTile onSubmit={handleNoteAdd}>
-        <AddNoteTileTextField name="noteText"/>
+        <AddNoteTileTextField name="noteText" />
         <AddNotePlusSign type="submit">add</AddNotePlusSign>
       </AddNoteTile>
     </StyledNotesFlexbox>
   )
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
+const mapStateToProps = (state) => {
+  return {
     loggedUser: state.user,
     notes: state.notes
   }
@@ -68,4 +65,4 @@ const mapDispatchToProps = {
   addNoteRedux
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(NotesGrid)
+export default connect(mapStateToProps, mapDispatchToProps)(NotesGrid)

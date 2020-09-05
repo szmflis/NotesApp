@@ -37,5 +37,4 @@ export const deleteNoteRedux = (id) => {
   }
 }
 
-
 export default noteReducer

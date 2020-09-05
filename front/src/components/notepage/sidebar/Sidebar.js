@@ -1,6 +1,6 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import  {
+import { connect } from 'react-redux'
+import {
   StyledSidebar,
   TopOfSidebarUsername,
   SidebarNotesContainer,
@@ -8,28 +8,24 @@ import  {
   SingleNoteTextSidebar,
   StyledTrashcan
 } from './StyledSidebarComponents'
-import {deleteNoteRedux} from '../../../reducers/note-reducer'
-import {deleteNote} from '../../../services/notes'
-
+import { deleteNoteRedux } from '../../../reducers/note-reducer'
+import { deleteNote } from '../../../services/notes'
 
 const Sidebar = (props) => {
-
   const conditionalNotesRender = () => {
-    if (props.loggedUser.user === null){
+    if (props.loggedUser.user === null) {
       return (
-        <p style={{fontSize: 20}}>Notes will not be saved unless You are logged in.</p>
-      )
-    } else {
-      return (
-        <SidebarNotesContainer>
-          {props.notes.map(note =>
-            <SingleNoteContainerSidebar key={note.id}>
-              <SingleNoteTextSidebar>{note.content}</SingleNoteTextSidebar>
-              <StyledTrashcan onClick={() => handleNoteDel(note.id)}/>
-            </SingleNoteContainerSidebar>)}
-        </SidebarNotesContainer>
+        <p style={{ fontSize: 20 }}>Notes will not be saved unless You are logged in.</p>
       )
     }
+    return (
+      <SidebarNotesContainer>
+        {props.notes.map(note => <SingleNoteContainerSidebar key={note.id}>
+          <SingleNoteTextSidebar>{note.content}</SingleNoteTextSidebar>
+          <StyledTrashcan onClick={() => handleNoteDel(note.id)} />
+        </SingleNoteContainerSidebar>)}
+      </SidebarNotesContainer>
+    )
   }
 
   const handleNoteDel = async (id) => {
@@ -43,7 +39,6 @@ const Sidebar = (props) => {
     } catch (exception) {
       console.log(exception)
     }
-
   }
 
   const conditionalUsernameRender = () => {
@@ -53,13 +48,12 @@ const Sidebar = (props) => {
           Log In
         </TopOfSidebarUsername>
       )
-    } else {
-      return (
-        <TopOfSidebarUsername to="/account">
-          <p>{props.loggedUser.user.name}</p>
-        </TopOfSidebarUsername>
-      )
     }
+    return (
+      <TopOfSidebarUsername to="/account">
+        <p>{props.loggedUser.user.name}</p>
+      </TopOfSidebarUsername>
+    )
   }
 
   return (
@@ -70,9 +64,8 @@ const Sidebar = (props) => {
   )
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
+const mapStateToProps = (state) => {
+  return {
     loggedUser: state.user,
     notes: state.notes
   }
@@ -82,4 +75,4 @@ const mapDispatchToProps = {
   deleteNoteRedux
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Sidebar)
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)

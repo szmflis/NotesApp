@@ -8,7 +8,7 @@ import Login from './components/Login/Login'
 import Help from './components/Help'
 import Contact from './components/Contact'
 import { setUser } from './reducers/user-reducer'
-import Notes from './components/notepage/Notes'
+import Notes from './pages/Notes/Notes'
 import Navbar from './components/Navbar/Navbar'
 
 const App = (props) => {

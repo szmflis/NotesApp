@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
 
 const BackgroundPicture = styled.div`
   background-image: url(${laptop});
-  height: 400px;
+  height: 500px;
   width: 100vw;
   background-size: cover;
   background-position: center;
