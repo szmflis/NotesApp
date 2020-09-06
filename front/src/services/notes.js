@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let token = null
 
-const baseUrl ="/api/notes"
+const baseUrl = '/api/notes'
 
 const setToken = newToken => {
   token = `bearer ${newToken}`
@@ -15,42 +15,45 @@ export const loadUserNotes = async (id) => {
   return response.data
 }
 
-export const addNote = async ({content, userId, headerAuth}) => {
-  console.log("addNote =>  sending data to server: ")
-  console.log(`noteText :   ${content}`)
-  console.log(`userId :     ${userId}`)
-  console.log(`token :      ${headerAuth}`)
-
+export const addNote = async ({ content, userId, headerAuth }) => {
   const config = {
-    headers: {Authorization: `Bearer ${headerAuth}`}
+    headers: { Authorization: `Bearer ${headerAuth}` }
   }
 
   const bodyParams = {
-    content: content,
-    userId: userId
+    content,
+    userId
   }
 
-  const response = await axios.post(baseUrl,bodyParams,config)
+  const response = await axios.post(baseUrl, bodyParams, config)
   console.log(response.data)
   return response.data
 }
 
-export const deleteNote = async ({noteId, headerAuth}) => {
-  console.log("deleteNote => sending delete req. to server: ")
-  console.log(`note id :    ${noteId}`)
-  console.log(`token :    ${headerAuth}`)
-
+export const deleteNote = async ({ noteId, headerAuth }) => {
   const config = {
-    headers: {Authorization: `Bearer ${headerAuth}`}
+    headers: { Authorization: `Bearer ${headerAuth}` }
   }
 
   const url = `${baseUrl}/${noteId}`
   const response = await axios.delete(url, config)
-  console.log(response.data)
+  return response
+}
+
+export const editNote = async ({ noteId, newContent, headerAuth }) => {
+  console.log(noteId, newContent, headerAuth)
+  const config = {
+    headers: { Authorization: `Bearer ${headerAuth}` }
+  }
+
+  const url = `${baseUrl}/${noteId}`
+
+  const bodyParams = {
+    content: newContent
+  }
+
+  const response = await axios.put(url, bodyParams, config)
   return response.data
 }
 
-export default {setToken}
-
-
-//'/user/:id/notes'
+export default { setToken }

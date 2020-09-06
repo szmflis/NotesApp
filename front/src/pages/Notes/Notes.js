@@ -8,6 +8,7 @@ import { Box } from '../../components/Box/Box'
 import { P } from '../../components/P/P'
 import { theme } from '../../utils/theme'
 import Note from './Note'
+import NewNoteForm from './NewNoteForm'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ const Notes = () => {
     <StyledWrapper>
       <Box width="100rem" align="center">
         <P fontSize={theme.fontSize.bigger}>
-          someuser123
+          {loggedUser.user !== null ? loggedUser.user.name : 'unlogged user'}
         </P>
       </Box>
       <Box
@@ -47,7 +48,7 @@ const Notes = () => {
       >
         {/* Left column */}
         <Box width="29rem" margin="0">
-
+          <NewNoteForm />
         </Box>
         <Box width="70rem" margin="0" padding="0" color={theme.colors.white}>
           {
@@ -55,8 +56,9 @@ const Notes = () => {
               notes.map(note => <Note
                 content={note.content}
                 date={note.date}
-                author={loggedUser.user.name}
-                key={note.date}
+                author={loggedUser.user !== null ? loggedUser.user.name : 'unlogged user'}
+                key={note.id}
+                id={note.id}
               />)
             ) : (
               console.log('Notes not found')
