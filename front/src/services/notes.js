@@ -11,7 +11,6 @@ const setToken = newToken => {
 
 export const loadUserNotes = async (id) => {
   const response = await axios.get(`/api/users/user/${id}/notes`)
-  console.log('User data: ', response.data)
   return response.data
 }
 

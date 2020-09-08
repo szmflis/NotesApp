@@ -18,7 +18,7 @@ const HowToBox = () => {
         <P>Username : testuser</P>
         <P>Password : qweqweqwe</P>
       </Box>
-      <Button as={Link} to="/notes">
+      <Button as={Link} to="/notes" type="button" variant="primary">
         <P fontSize={theme.fontSize.big} color={theme.colors.white}>
           Start Noting
         </P>

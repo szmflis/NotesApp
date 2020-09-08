@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { addNoteRedux } from '../../reducers/note-reducer'
 import { Button } from '../../components/Button/Button'
@@ -10,66 +11,63 @@ import { theme } from '../../styles/theme'
 const StyledWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
-`
-
-const StyledButton = styled(Button)`
+  align-items: center;
   width: 100%;
 `
 
 const NewNoteForm = () => {
-  const [currentContent, setCurrentContent] = useState('')
-
+  const { register, handleSubmit, errors } = useForm()
   const loggedUser = useSelector(state => state.user)
   const dispatch = useDispatch()
 
-  const handleNoteAdd = async (event) => {
-    event.preventDefault()
-
+  const handleNoteAdd = async ({ textbox }) => {
     if (loggedUser.user == null) {
       dispatch(addNoteRedux({
-        content: currentContent,
+        content: textbox,
         date: new Date(),
       }))
     } else {
       dispatch(addNoteRedux({
-        content: currentContent,
+        content: textbox,
         userId: loggedUser.user.id,
         auth: loggedUser.user.token
       }))
     }
-
-    setCurrentContent('')
-  }
-
-  const renderContentWarning = () => {
-    if (currentContent.length < 5 && currentContent.length !== 0) {
-      return (
-        <P>Note has to be at least 5 letters long</P>
-      )
-    }
-    if (currentContent.length > 1024) {
-      return (
-        <P>Note has to be under 1024 letters long</P>
-      )
-    }
-    return null
   }
 
   return (
-    <StyledWrapper onSubmit={handleNoteAdd}>
+    <StyledWrapper onSubmit={handleSubmit(handleNoteAdd)}>
+      <P
+        fontSize={theme.fontSize.big}
+        borderBottom="1px solid grey"
+        margin="7px"
+      >
+        Add new Note
+      </P>
       <Textbox
         placeholder="New note text"
-        value={currentContent}
-        onChange={({ target }) => setCurrentContent(target.value)}
+        name="textbox"
+        ref={register({
+          required: 'Has to be between 5 and 1024 characters',
+          minLength: {
+            value: 5,
+            message: 'Note is too short'
+          },
+          maxLength: {
+            value: 1024,
+            message: 'Note is too long'
+          },
+          validate: value => value.trim().length !== 0 || 'Note cannot be only whitespace'
+        })}
+      />
+      <Button
+        width="100%"
+        variant="primary"
+        type="submit"
       >
-      </Textbox>
-      <StyledButton type="submit">
-        <P color={theme.colors.white} fontSize={theme.fontSize.normal}>
-          add note
-        </P>
-      </StyledButton>
-      {renderContentWarning()}
+        <P color={theme.colors.white}>Save</P>
+      </Button>
+      {errors.textbox && <P>{errors.textbox.message}</P>}
     </StyledWrapper>
   )
 }

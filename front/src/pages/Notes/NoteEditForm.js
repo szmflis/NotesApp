@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
 
 import { editNoteRedux } from '../../reducers/note-reducer'
 import { P } from '../../components/P/P'
+import { Box } from '../../components/Box/Box'
 import { Textbox } from '../../components/Textbox/Textbox'
 import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
@@ -19,44 +21,50 @@ const StyledForm = styled.form`
 `
 
 const NoteEditForm = ({ content, setEditable, id }) => {
-  const [currentContent, setCurrentContent] = useState(content)
+  const { register, handleSubmit, errors } = useForm()
 
   const dispatch = useDispatch()
   const loggedUser = useSelector(state => state.user)
 
-  const handleNoteEdit = (event) => {
-    event.preventDefault()
+  const handleNoteEdit = ({ textbox }) => {
     setEditable(false)
-    dispatch(editNoteRedux(id, currentContent, loggedUser.user.token))
-  }
-
-  const renderContentWarning = () => {
-    if (currentContent.length < 5 && currentContent.length !== 0) {
-      return (
-        <P>Note has to be at least 5 letters long</P>
-      )
-    }
-    if (currentContent.length > 1024) {
-      return (
-        <P>Note has to be under 1024 letters long</P>
-      )
-    }
-    return null
+    dispatch(editNoteRedux(id, textbox, loggedUser.user.token))
   }
 
   return (
-    <StyledForm onSubmit={handleNoteEdit}>
+    <StyledForm onSubmit={handleSubmit(handleNoteEdit)}>
       <Textbox
-        value={currentContent}
-        onChange={({ target }) => setCurrentContent(target.value)}
+        name="textbox"
+        defaultValue={content}
         width="90%"
+        ref={register({
+          required: 'Has to be between 5 and 1024 characters',
+          minLength: {
+            value: 5,
+            message: 'Note is too short'
+          },
+          maxLength: {
+            value: 1024,
+            message: 'Note is too long'
+          },
+          validate: value => value.trim().length !== 0 || 'Note cannot be only whitespace'
+        })}
       />
-      <Button type="submit" margin="10px 5px">
-        <P color={theme.colors.white} fontSize={theme.fontSize.normal}>
-          save changes
-        </P>
-      </Button>
-      {renderContentWarning()}
+
+      <Box padding="0" margin="0" direction="row" justify="space-around">
+        <Button variant="primary" type="submit">
+          <P color={theme.colors.white}>
+            Save
+          </P>
+        </Button>
+        <Button variant="cancel" type="button" onClick={() => setEditable(false)}>
+          <P color={theme.colors.white}>
+            Cancel
+          </P>
+        </Button>
+      </Box>
+
+      {errors.textbox && <P>{errors.textbox.message}</P>}
     </StyledForm>
   )
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { pageFadeInOut } from '../../utils/motion'
 
-import laptop from '../../assets/workspace.jpg'
+import laptop from '../../assets/workspace.jpeg'
 import { theme } from '../../styles/theme'
 import { P } from '../../components/P/P'
 import { Box } from '../../components/Box/Box'
@@ -33,7 +33,7 @@ const BackgroundPicture = styled.div`
 `
 
 const TextWrapper = styled.div`
-  border-radius: ${theme.spaces[4]}px;
+  border-radius: ${theme.space[4]}px;
   background-color: rgba(117, 117, 117, 0.6);
   padding: 40px;
 `
@@ -75,8 +75,8 @@ const Home = () => {
             <Box color={theme.colors.white} opacity={0.5}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac nunc vel ipsum tempus suscipit. Proin consequat felis vitae est efficitur sagittis. Nullam eget metus eu felis porttitor ullamcorper. Maecenas malesuada lorem justo, vitae condimentum nibh ultricies at. Cras posuere tortor lorem, quis elementum dui pharetra sed.
             </Box>
-            <Button>
-              <P fontSize={theme.fontSize.big} color={theme.colors.white}>
+            <Button variant="disabled" disabled>
+              <P fontSize={theme.fontSize.big} color={theme.colors.black}>
                 Do nothing
               </P>
             </Button>

@@ -30,14 +30,18 @@ const Notes = () => {
         dispatch(initializeNotes(userData))
       }
     }
-    fetchData()
-  }, [loggedUser])
+    if (notes.length === 0) {
+      fetchData()
+    }
+  }, [dispatch, loggedUser.user, notes.length])
 
   return (
     <StyledWrapper initial="out" animate="in" exit="out" variants={pageFadeInOut}>
       <Box width="100rem" align="center">
         <P fontSize={theme.fontSize.bigger}>
-          {loggedUser.user !== null ? loggedUser.user.name : 'unlogged user'}
+          {loggedUser.user !== null
+            ? `${loggedUser.user.name} ( ${notes.length} notes )`
+            : 'unlogged user'}
         </P>
       </Box>
       <Box direction="row" justify="space-between" width="100rem" padding="0" margin="0" color={theme.colors.white}>

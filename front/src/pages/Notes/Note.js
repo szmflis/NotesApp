@@ -14,8 +14,8 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 70rem;
-  border-radius: ${theme.spaces[4]}px;
-  margin-bottom: ${theme.spaces[4]}px;
+  border-radius: ${theme.space[4]}px;
+  margin-bottom: ${theme.space[4]}px;
 `
 
 const StyledHeader = styled.div`
@@ -28,7 +28,7 @@ const StyledHeader = styled.div`
 `
 
 const StyledContent = styled.div`
-  padding: ${theme.spaces[3]}px;
+  padding: ${theme.space[3]}px;
   background: ${theme.colors.yellow};
   border-radius: 0px 0px 8px 8px;
   word-wrap: break-word;

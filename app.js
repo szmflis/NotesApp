@@ -22,7 +22,8 @@ mongoose.connect(config.MONGODB_URI, {useNewUrlParser: true, useFindAndModify: f
 
 app.use(cors())
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('front/build'))
+    app.use(express.static('build'))
+      // app.use(express.static('front/build'))
 } 
 
 app.use(bodyParser.json())

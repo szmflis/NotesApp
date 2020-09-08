@@ -10,7 +10,7 @@ import { setUser } from './reducers/user-reducer'
 import Notes from './pages/Notes/Notes'
 import Navbar from './components/Navbar/Navbar'
 
-const App = (props) => {
+const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const App = (props) => {
       const user = JSON.parse(storeUserJSON)
       dispatch(setUser(user))
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <Layout>
