@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { pageFadeInOut } from '../../utils/motion'
 
-import laptop from '../../assets/workspace.jpeg'
+import laptop from '../../assets/workspace.jpg'
 import { theme } from '../../styles/theme'
 import { P } from '../../components/P/P'
 import { Box } from '../../components/Box/Box'

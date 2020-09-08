@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setUser } from '../../reducers/user-reducer'
+import { setUserFromMemory } from '../../reducers/user-reducer'
 import { initializeNotes } from '../../reducers/note-reducer'
 import { theme } from '../../styles/theme'
 import { Box } from '../Box/Box'
@@ -38,7 +38,7 @@ const NavElement = styled.a`
 
 const Navbar = (props) => {
   const handleLogout = (event) => {
-    props.setUser(null)
+    props.setUserFromMemory(null)
     props.initializeNotes([])
     window.localStorage.removeItem('loggedUser')
   }
@@ -72,7 +72,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  setUser,
+  setUserFromMemory,
   initializeNotes
 }
 
