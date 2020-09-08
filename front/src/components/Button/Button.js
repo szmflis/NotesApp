@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 
 export const Button = styled.button`
   cursor: pointer;
@@ -13,5 +13,5 @@ export const Button = styled.button`
   height: ${({ height }) => height || 'auto'};
   padding: 10px;
   margin: ${({ margin }) => margin || '10px 0px 10px 0px'};
-  background: ${theme.colors.primary};
+  background: ${({ background }) => background || theme.colors.primary};
 `

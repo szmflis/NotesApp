@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 
 export const Textbox = styled.textarea`
   border-radius: ${({ radius }) => radius || `${theme.spaces[4]}px`};

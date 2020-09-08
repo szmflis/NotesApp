@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Box } from '../../components/Box/Box'
 import { P } from '../../components/P/P'
 import { Button } from '../../components/Button/Button'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 
 const HowToBox = () => {
   return (
@@ -17,7 +18,7 @@ const HowToBox = () => {
         <P>Username : testuser</P>
         <P>Password : qweqweqwe</P>
       </Box>
-      <Button>
+      <Button as={Link} to="/notes">
         <P fontSize={theme.fontSize.big} color={theme.colors.white}>
           Start Noting
         </P>

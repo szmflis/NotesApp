@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setUser } from '../../reducers/user-reducer'
 import { initializeNotes } from '../../reducers/note-reducer'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 import { Box } from '../Box/Box'
 
 const StyledNavbar = styled.nav`

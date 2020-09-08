@@ -2,7 +2,7 @@ import React from 'react'
 import { Box } from '../../components/Box/Box'
 import { P } from '../../components/P/P'
 import { A } from '../../components/A/A'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 import { Img } from '../../components/Img/Img'
 import { Span } from '../../components/Span/Span'
 import icons from '../../utils/icons'
@@ -20,13 +20,13 @@ const StackBox = () => {
         <A href="https://nodejs.org/">
           <Img src={icons.nodeIcon} alt="Node.js Icon" size="50px" />
         </A>
-        <A href="https://www.w3schools.com/js/">
+        <A href="https://developer.mozilla.org/docs/Web/JavaScript">
           <Img src={icons.jsIcon} alt="Javascript Icon" size="50px" />
         </A>
-        <A href="https://www.w3schools.com/css/">
+        <A href="https://developer.mozilla.org/docs/Web/CSS">
           <Img src={icons.cssIcon} alt="CSS3 Icon" size="50px" />
         </A>
-        <A href="https://www.w3schools.com/html/">
+        <A href="https://developer.mozilla.org/docs/Web/html">
           <Img src={icons.htmlIcon} alt="HTML5 Icon" size="50px" />
         </A>
       </Box>

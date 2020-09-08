@@ -1,10 +1,9 @@
 import React from 'react'
 import { Box } from '../../components/Box/Box'
 import { P } from '../../components/P/P'
-import { Span } from '../../components/Span/Span'
 import { A } from '../../components/A/A'
 import { Img } from '../../components/Img/Img'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 import icons from '../../utils/icons'
 
 const Contact = () => {

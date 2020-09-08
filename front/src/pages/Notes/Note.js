@@ -4,16 +4,18 @@ import styled from 'styled-components'
 import moment from 'moment'
 import { FaTrash, FaEdit } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteNoteRedux, deleteNoteUnloggedUser, editNoteRedux } from '../../reducers/note-reducer'
-import { theme } from '../../utils/theme'
+
+import { deleteNoteRedux, deleteNoteUnloggedUser } from '../../reducers/note-reducer'
+import { theme } from '../../styles/theme'
 import { P } from '../../components/P/P'
+import NoteEditForm from './NoteEditForm'
 
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 70rem;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  border-radius: ${theme.spaces[4]}px;
+  margin-bottom: ${theme.spaces[4]}px;
 `
 
 const StyledHeader = styled.div`
@@ -26,14 +28,11 @@ const StyledHeader = styled.div`
 `
 
 const StyledContent = styled.div`
-  padding: 5px 5px 0px 5px;
+  padding: ${theme.spaces[3]}px;
   background: ${theme.colors.yellow};
   border-radius: 0px 0px 8px 8px;
-
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
+  word-wrap: break-word;
+  height: auto;
 `
 
 const StyledBinIcon = styled(FaTrash)`
@@ -50,11 +49,17 @@ const StyledBinIcon = styled(FaTrash)`
 
 const StyledEditIcon = styled(FaEdit)`
   color: ${theme.colors.lightGrey};
+  height: 18px;
+  width: 18px;
+  transition: color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    color: ${theme.colors.primary};
+  }
 `
 
-const Note = ({
-  content, date, author, id
-}) => {
+const Note = ({ content, date, author, id }) => {
   const [editable, setEditable] = useState(false)
 
   const dispatch = useDispatch()
@@ -68,19 +73,10 @@ const Note = ({
     }
   }
 
-  const handleNoteEdit = (event) => {
-    event.preventDefault()
-    setEditable(false)
-    const newContent = event.target.textArea.value
-    dispatch(editNoteRedux(id, newContent, loggedUser.user.token))
-  }
-
   return (
     <StyledWrapper>
       <StyledHeader>
-        <P color={theme.colors.white}>
-          {author}
-        </P>
+        <P color={theme.colors.white}>{author}</P>
         <StyledBinIcon onClick={() => handleNoteDelete()} />
         <StyledEditIcon onClick={() => setEditable(!editable)} />
         <P color={theme.colors.white}>
@@ -88,15 +84,9 @@ const Note = ({
         </P>
       </StyledHeader>
       {editable ? (
-        <form onSubmit={handleNoteEdit}>
-          <textarea defaultValue={content} name="textArea">
-          </textarea>
-          <button type="submit">save changes</button>
-        </form>
+        <NoteEditForm content={content} setEditable={setEditable} id={id} />
       ) : (
-        <StyledContent>
-          {content}
-        </StyledContent>
+        <StyledContent>{content}</StyledContent>
       )}
     </StyledWrapper>
   )

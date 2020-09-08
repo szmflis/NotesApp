@@ -1,45 +1,33 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import { addNoteRedux } from '../../reducers/note-reducer'
-import { Button } from '../../components/Button/Button'
+
+import { editNoteRedux } from '../../reducers/note-reducer'
 import { P } from '../../components/P/P'
 import { Textbox } from '../../components/Textbox/Textbox'
+import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
 
-const StyledWrapper = styled.form`
+const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+  background: ${theme.colors.lightGrey};
+  padding: 5px;
+  border-radius: 0px 0px 8px 8px;
 `
 
-const StyledButton = styled(Button)`
-  width: 100%;
-`
+const NoteEditForm = ({ content, setEditable, id }) => {
+  const [currentContent, setCurrentContent] = useState(content)
 
-const NewNoteForm = () => {
-  const [currentContent, setCurrentContent] = useState('')
-
-  const loggedUser = useSelector(state => state.user)
   const dispatch = useDispatch()
+  const loggedUser = useSelector(state => state.user)
 
-  const handleNoteAdd = async (event) => {
+  const handleNoteEdit = (event) => {
     event.preventDefault()
-
-    if (loggedUser.user == null) {
-      dispatch(addNoteRedux({
-        content: currentContent,
-        date: new Date(),
-      }))
-    } else {
-      dispatch(addNoteRedux({
-        content: currentContent,
-        userId: loggedUser.user.id,
-        auth: loggedUser.user.token
-      }))
-    }
-
-    setCurrentContent('')
+    setEditable(false)
+    dispatch(editNoteRedux(id, currentContent, loggedUser.user.token))
   }
 
   const renderContentWarning = () => {
@@ -57,21 +45,26 @@ const NewNoteForm = () => {
   }
 
   return (
-    <StyledWrapper onSubmit={handleNoteAdd}>
+    <StyledForm onSubmit={handleNoteEdit}>
       <Textbox
-        placeholder="New note text"
         value={currentContent}
         onChange={({ target }) => setCurrentContent(target.value)}
-      >
-      </Textbox>
-      <StyledButton type="submit">
+        width="90%"
+      />
+      <Button type="submit" margin="10px 5px">
         <P color={theme.colors.white} fontSize={theme.fontSize.normal}>
-          add note
+          save changes
         </P>
-      </StyledButton>
+      </Button>
       {renderContentWarning()}
-    </StyledWrapper>
+    </StyledForm>
   )
 }
 
-export default NewNoteForm
+NoteEditForm.propTypes = {
+  content: PropTypes.string.isRequired,
+  setEditable: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired
+}
+
+export default NoteEditForm

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import PropTypes from 'prop-types'
-import { theme } from '../utils/theme'
+import { theme } from '../styles/theme'
 
 const GlobalStyle = createGlobalStyle`
   html {

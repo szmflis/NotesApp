@@ -1,7 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import { pageFadeInOut } from '../../utils/motion'
+
 import laptop from '../../assets/workspace.jpg'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 import { P } from '../../components/P/P'
 import { Box } from '../../components/Box/Box'
 import { Button } from '../../components/Button/Button'
@@ -10,7 +13,7 @@ import HowToBox from './HowToBox'
 import StackBox from './StackBox'
 import Contact from './Contact'
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,14 +33,14 @@ const BackgroundPicture = styled.div`
 `
 
 const TextWrapper = styled.div`
-  border-radius: 10px;
+  border-radius: ${theme.spaces[4]}px;
   background-color: rgba(117, 117, 117, 0.6);
   padding: 40px;
 `
 
 const Home = () => {
   return (
-    <StyledWrapper>
+    <StyledWrapper initial="out" animate="in" exit="out" variants={pageFadeInOut}>
       <BackgroundPicture>
         <TextWrapper>
           <P fontSize="3rem" color={theme.colors.white}>

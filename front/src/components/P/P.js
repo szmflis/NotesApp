@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { theme } from '../../utils/theme'
+import { theme } from '../../styles/theme'
 
 export const P = styled.p`
   font-size: ${({ fontSize }) => fontSize || theme.fontSize.normal};
