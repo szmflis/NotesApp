@@ -9,36 +9,14 @@ import { theme } from '../../styles/theme'
 import registrationService from '../../services/users'
 import { setUser } from '../../reducers/user-reducer'
 
+import { Input, InputWrapper } from '../../components/Input/Input'
+
 const StyledWrapper = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 10px;
-`
-
-const Input = styled.input`
-  width: 100%;
-  font-size: ${theme.fontSize.big};
-  border: 1px solid ${theme.colors.grey};
-  background: none;
-  padding: 10px;
-  
-  transition: 0.5s border-color;
-
-  &:hover {
-    border-color: ${theme.colors.primaryLight};
-  }
-  
-  &:focus {
-    outline: none;
-    border-color: ${theme.colors.primaryDark};
-  }
-`
-
-const InputWrapper = styled.div`
-  width: 80%;
-  margin: 10px;
 `
 
 const Signup = () => {

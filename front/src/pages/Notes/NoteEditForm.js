@@ -28,7 +28,11 @@ const NoteEditForm = ({ content, setEditable, id }) => {
 
   const handleNoteEdit = ({ textbox }) => {
     setEditable(false)
-    dispatch(editNoteRedux(id, textbox, loggedUser.user.token))
+    if (loggedUser) {
+      dispatch(editNoteRedux(id, textbox, loggedUser.token))
+    } else {
+      dispatch(editNoteRedux(id, textbox))
+    }
   }
 
   return (

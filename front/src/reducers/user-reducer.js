@@ -1,7 +1,7 @@
 import loginService from '../services/login'
 import noteService from '../services/notes'
 
-const initialState = { user: null }
+const initialState = null
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -38,9 +38,7 @@ export const setUser = (username, password) => {
 export const setUserFromMemory = (user) => {
   return {
     type: 'SET_USER',
-    data: {
-      user
-    }
+    data: user
   }
 }
 

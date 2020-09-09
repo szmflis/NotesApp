@@ -60,21 +60,28 @@ export const deleteNoteUnloggedUser = (id) => {
 export const editNoteRedux = (id, content, auth) => {
   return async dispatch => {
     try {
-      const responseData = await editNote({
-        noteId: id,
-        newContent: content,
-        headerAuth: auth
-      })
-
-      console.log(responseData)
-
-      dispatch({
-        type: 'EDIT_NOTE',
-        data: {
-          id: responseData.id,
-          content: responseData.content
-        }
-      })
+      if (auth) {
+        const responseData = await editNote({
+          noteId: id,
+          newContent: content,
+          headerAuth: auth
+        })
+        dispatch({
+          type: 'EDIT_NOTE',
+          data: {
+            id: responseData.id,
+            content: responseData.content
+          }
+        })
+      } else {
+        dispatch({
+          type: 'EDIT_NOTE',
+          data: {
+            id,
+            content
+          }
+        })
+      }
     } catch (exception) {
       console.log(exception)
     }

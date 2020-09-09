@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setUserFromMemory } from '../../reducers/user-reducer'
 import { initializeNotes } from '../../reducers/note-reducer'
@@ -36,44 +36,29 @@ const NavElement = styled.a`
   }
 `
 
-const Navbar = (props) => {
-  const handleLogout = (event) => {
-    props.setUserFromMemory(null)
-    props.initializeNotes([])
+const Navbar = () => {
+  const loggedUser = useSelector(state => state.user)
+  const dispatch = useDispatch()
+
+  const handleLogout = () => {
+    dispatch(setUserFromMemory(null))
+    dispatch(initializeNotes([]))
     window.localStorage.removeItem('loggedUser')
   }
 
   return (
     <StyledNavbar>
       <NavElement as={Link} to="/">LOGOPLACE</NavElement>
-      <NavElement as={Link} to="/notes" margin="0px 0px 0px 90px">Your Notes</NavElement>
+      <NavElement as={Link} to="/notes">Your Notes</NavElement>
       {
-        props.loggedUser.user === null ? (
-          <Box margin="0" padding="0" color="inherit" direction="row" width="auto">
-            <NavElement as={Link} to="/login" margin="0px 15px 0px 15px">login</NavElement>
-            <NavElement as={Link} to="/register" margin="0px 15px 0px 15px">signup</NavElement>
-          </Box>
+        loggedUser === null ? (
+          <NavElement as={Link} to="/logsign" margin="0px 15px 0px 15px">Sign</NavElement>
         ) : (
-          <Box margin="0" padding="0" color="inherit" direction="row" width="auto">
-            <NavElement as={Link} to="/account" margin="0px 15px 0px 15px">account</NavElement>
-            <NavElement as={Link} to="/" margin="0px 15px 0px 15px" onClick={handleLogout}>logout</NavElement>
-          </Box>
+          <NavElement as={Link} to="/" margin="0px 15px 0px 15px" onClick={handleLogout}>Logout</NavElement>
         )
       }
     </StyledNavbar>
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loggedUser: state.user,
-    notes: state.notes
-  }
-}
-
-const mapDispatchToProps = {
-  setUserFromMemory,
-  initializeNotes
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default Navbar

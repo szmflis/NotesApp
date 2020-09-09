@@ -6,7 +6,6 @@ const baseUrl = '/api/notes'
 
 const setToken = newToken => {
   token = `bearer ${newToken}`
-  console.log(token)
 }
 
 export const loadUserNotes = async (id) => {
@@ -25,7 +24,6 @@ export const addNote = async ({ content, userId, headerAuth }) => {
   }
 
   const response = await axios.post(baseUrl, bodyParams, config)
-  console.log(response.data)
   return response.data
 }
 

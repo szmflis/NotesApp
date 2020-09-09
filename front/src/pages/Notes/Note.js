@@ -66,8 +66,8 @@ const Note = ({ content, date, author, id }) => {
   const loggedUser = useSelector(state => state.user)
 
   const handleNoteDelete = () => {
-    if (loggedUser.user !== null) {
-      dispatch(deleteNoteRedux(id, loggedUser.user.token))
+    if (loggedUser) {
+      dispatch(deleteNoteRedux(id, loggedUser.token))
     } else {
       dispatch(deleteNoteUnloggedUser(id))
     }

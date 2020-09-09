@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { darken } from 'polished'
+import { motion } from 'framer-motion'
 import { Box } from '../../components/Box/Box'
 import { P } from '../../components/P/P'
 import { theme } from '../../styles/theme'
@@ -26,21 +27,23 @@ const LogSign = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   return (
-    <Box width="70rem" align="center" color={theme.colors.lightGrey}>
-      <Box direction="row" padding="0" justify="center" width="80%" margin="20px 0px 10px 0px">
-        <StyledSwitch isActive={isLogin ? true : false} onClick={() => setIsLogin(true)}>
-          <P color={theme.colors.white} fontSize={theme.fontSize.big}>
-            Login
-          </P>
-        </StyledSwitch>
-        <StyledSwitch isActive={isLogin ? false : true} onClick={() => setIsLogin(false)}>
-          <P color={theme.colors.white} fontSize={theme.fontSize.big}>
-            Signup
-          </P>
-        </StyledSwitch>
+    <motion.div>
+      <Box width="70rem" align="center" color={theme.colors.lightGrey}>
+        <Box direction="row" padding="0" justify="center" width="80%" margin="20px 0px 10px 0px">
+          <StyledSwitch isActive={isLogin ? true : false} onClick={() => setIsLogin(true)}>
+            <P color={theme.colors.white} fontSize={theme.fontSize.big}>
+              Login
+            </P>
+          </StyledSwitch>
+          <StyledSwitch isActive={isLogin ? false : true} onClick={() => setIsLogin(false)}>
+            <P color={theme.colors.white} fontSize={theme.fontSize.big}>
+              Signup
+            </P>
+          </StyledSwitch>
+        </Box>
+        { isLogin ? <Login /> : <Signup /> }
       </Box>
-      { isLogin ? <Login /> : <Signup /> }
-    </Box>
+    </motion.div>
   )
 }
 

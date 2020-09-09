@@ -25,22 +25,23 @@ const Notes = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (loggedUser.user !== null) {
-        const userData = await loadUserNotes(loggedUser.user.id)
+      if (loggedUser !== null) {
+        console.log(loggedUser)
+        const userData = await loadUserNotes(loggedUser.id)
         dispatch(initializeNotes(userData))
       }
     }
     if (notes.length === 0) {
       fetchData()
     }
-  }, [dispatch, loggedUser.user, notes.length])
+  }, [dispatch, loggedUser, notes.length])
 
   return (
     <StyledWrapper initial="out" animate="in" exit="out" variants={pageFadeInOut}>
       <Box width="100rem" align="center">
         <P fontSize={theme.fontSize.bigger}>
-          {loggedUser.user !== null
-            ? `${loggedUser.user.name} ( ${notes.length} notes )`
+          {loggedUser !== null
+            ? `${loggedUser.name} ( ${notes.length} notes )`
             : 'unlogged user'}
         </P>
       </Box>
@@ -54,7 +55,7 @@ const Notes = () => {
                 notes.map(note => <Note
                   content={note.content}
                   date={note.date}
-                  author={loggedUser.user !== null ? loggedUser.user.name : 'unlogged user'}
+                  author={loggedUser !== null ? loggedUser.name : 'unlogged user'}
                   key={note.id}
                   id={note.id}
                 />)

@@ -21,16 +21,17 @@ const NewNoteForm = () => {
   const dispatch = useDispatch()
 
   const handleNoteAdd = async ({ textbox }) => {
-    if (loggedUser.user == null) {
+    if (loggedUser === null) {
       dispatch(addNoteRedux({
         content: textbox,
         date: new Date(),
+        id: Date.now().toString()
       }))
     } else {
       dispatch(addNoteRedux({
         content: textbox,
-        userId: loggedUser.user.id,
-        auth: loggedUser.user.token
+        userId: loggedUser.id,
+        auth: loggedUser.token
       }))
     }
   }
