@@ -10,8 +10,8 @@ import Navbar from './components/Navbar/Navbar'
 import LogSign from './pages/LogSign/LogSign'
 
 const App = () => {
-  const dispatch = useDispatch()
   const location = useLocation()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const storeUserJSON = window.localStorage.getItem('loggedUser')
