@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { pageFadeInOut } from '../../utils/motion'
-
 import laptop from '../../assets/workspace.jpg'
 import { theme } from '../../styles/theme'
 import { P } from '../../components/P/P'
@@ -40,7 +38,13 @@ const TextWrapper = styled.div`
 
 const Home = () => {
   return (
-    <StyledWrapper initial="out" animate="in" exit="out" variants={pageFadeInOut}>
+    <StyledWrapper
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.fadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <BackgroundPicture>
         <TextWrapper>
           <P fontSize="3rem" color={theme.colors.white}>

@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { P } from '../../components/P/P'
 import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
 import { setUser } from '../../reducers/user-reducer'
 import { Input, InputWrapper } from '../../components/Input/Input'
 
-const StyledWrapper = styled.form`
+const StyledWrapper = styled(motion.form)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,11 +25,18 @@ const Login = () => {
 
   const handleLogin = ({ username, password }) => {
     dispatch(setUser(username, password))
-    history.push('/')
+    history.push('/notes')
   }
 
   return (
-    <StyledWrapper onSubmit={handleSubmit(handleLogin)}>
+    <StyledWrapper
+      onSubmit={handleSubmit(handleLogin)}
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.fadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <P fontSize={theme.fontSize.big}>Welcome Back!</P>
       <InputWrapper>
         <P>Username | email</P>

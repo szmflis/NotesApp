@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import { motion } from 'framer-motion'
 
 import { editNoteRedux } from '../../reducers/note-reducer'
 import { P } from '../../components/P/P'
@@ -11,7 +12,7 @@ import { Textbox } from '../../components/Textbox/Textbox'
 import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
 
-const StyledForm = styled.form`
+const StyledForm = styled(motion.form)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +37,14 @@ const NoteEditForm = ({ content, setEditable, id }) => {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit(handleNoteEdit)}>
+    <StyledForm
+      onSubmit={handleSubmit(handleNoteEdit)}
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.scaleFadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <Textbox
         name="textbox"
         defaultValue={content}

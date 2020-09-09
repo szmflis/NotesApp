@@ -38,7 +38,6 @@ export const deleteNote = async ({ noteId, headerAuth }) => {
 }
 
 export const editNote = async ({ noteId, newContent, headerAuth }) => {
-  console.log(noteId, newContent, headerAuth)
   const config = {
     headers: { Authorization: `Bearer ${headerAuth}` }
   }

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
 import Layout from './layout/Layout'
@@ -11,6 +11,7 @@ import LogSign from './pages/LogSign/LogSign'
 
 const App = () => {
   const dispatch = useDispatch()
+  const location = useLocation()
 
   useEffect(() => {
     const storeUserJSON = window.localStorage.getItem('loggedUser')
@@ -23,16 +24,20 @@ const App = () => {
 
   return (
     <Layout>
-      <Router>
-        <Navbar />
-        <AnimatePresence>
-          <Switch>
-            <Route exact path="/" render={() => <Home />} />
-            <Route exact path="/logsign" render={() => <LogSign />} />
-            <Route exact path="/notes" render={() => <Notes />} />
-          </Switch>
-        </AnimatePresence>
-      </Router>
+      <Navbar />
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/logsign">
+            <LogSign />
+          </Route>
+          <Route path="/notes">
+            <Notes />
+          </Route>
+        </Switch>
+      </AnimatePresence>
     </Layout>
   )
 }

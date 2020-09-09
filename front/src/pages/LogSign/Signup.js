@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { P } from '../../components/P/P'
 import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
@@ -11,7 +12,7 @@ import { setUser } from '../../reducers/user-reducer'
 
 import { Input, InputWrapper } from '../../components/Input/Input'
 
-const StyledWrapper = styled.form`
+const StyledWrapper = styled(motion.form)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,11 +28,18 @@ const Signup = () => {
   const handleSignup = async ({ username, password, name }) => {
     const responseData = await registrationService.register({ username, password, name })
     dispatch(setUser(responseData.username, password))
-    history.push('/')
+    history.push('/notes')
   }
 
   return (
-    <StyledWrapper onSubmit={handleSubmit(handleSignup)}>
+    <StyledWrapper
+      onSubmit={handleSubmit(handleSignup)}
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.fadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <P fontSize={theme.fontSize.big}>Sign Up for Free</P>
       <InputWrapper>
         <P>Username | email</P>

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import { pageFadeInOut } from '../../utils/motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { loadUserNotes } from '../../services/notes'
 import { initializeNotes } from '../../reducers/note-reducer'
@@ -37,7 +36,13 @@ const Notes = () => {
   }, [dispatch, loggedUser, notes.length])
 
   return (
-    <StyledWrapper initial="out" animate="in" exit="out" variants={pageFadeInOut}>
+    <StyledWrapper
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.fadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <Box width="100rem" align="center">
         <P fontSize={theme.fontSize.bigger}>
           {loggedUser !== null
@@ -50,20 +55,22 @@ const Notes = () => {
           <NewNoteForm />
         </Box>
         <Box width="70rem" margin="0" padding="0" color={theme.colors.white}>
-          {
-              notes !== null || undefined ? (
-                notes.map(note => <Note
-                  content={note.content}
-                  date={note.date}
-                  author={loggedUser !== null ? loggedUser.name : 'unlogged user'}
-                  key={note.id}
-                  id={note.id}
-                />)
-              ) : (
-                console.log('Notes not found')
-                // TODO make error component
-              )
-          }
+          <AnimatePresence>
+            {
+                notes !== null || undefined ? (
+                  notes.map(note => <Note
+                    content={note.content}
+                    date={note.date}
+                    author={loggedUser !== null ? loggedUser.name : 'unlogged user'}
+                    key={note.id}
+                    id={note.id}
+                  />)
+                ) : (
+                  console.log('Notes not found')
+                  // TODO make error component
+                )
+            }
+          </AnimatePresence>
         </Box>
       </Box>
     </StyledWrapper>

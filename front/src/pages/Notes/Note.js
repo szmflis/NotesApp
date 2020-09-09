@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import moment from 'moment'
 import { FaTrash, FaEdit } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { deleteNoteRedux, deleteNoteUnloggedUser } from '../../reducers/note-reducer'
 import { theme } from '../../styles/theme'
 import { P } from '../../components/P/P'
 import NoteEditForm from './NoteEditForm'
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 70rem;
@@ -27,7 +28,7 @@ const StyledHeader = styled.div`
   padding: 0px 5px 0px 5px;
 `
 
-const StyledContent = styled.div`
+const StyledContent = styled(motion.div)`
   padding: ${theme.space[3]}px;
   background: ${theme.colors.yellow};
   border-radius: 0px 0px 8px 8px;
@@ -74,7 +75,13 @@ const Note = ({ content, date, author, id }) => {
   }
 
   return (
-    <StyledWrapper>
+    <StyledWrapper
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.scaleFadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <StyledHeader>
         <P color={theme.colors.white}>{author}</P>
         <StyledBinIcon onClick={() => handleNoteDelete()} />
@@ -83,11 +90,27 @@ const Note = ({ content, date, author, id }) => {
           {moment(date).format('MMM Do YYYY, h:mm:ss')}
         </P>
       </StyledHeader>
-      {editable ? (
-        <NoteEditForm content={content} setEditable={setEditable} id={id} />
-      ) : (
-        <StyledContent>{content}</StyledContent>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {editable ? (
+          <NoteEditForm
+            content={content}
+            setEditable={setEditable}
+            id={id}
+            key={id}
+          />
+        ) : (
+          <StyledContent
+            key={content}
+            initial="out"
+            animate="in"
+            exit="out"
+            variants={theme.framerVar.fadeInOut}
+            transition={theme.framerTrans.fastTrans}
+          >
+            {content}
+          </StyledContent>
+        )}
+      </AnimatePresence>
     </StyledWrapper>
   )
 }

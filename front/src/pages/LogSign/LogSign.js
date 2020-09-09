@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { darken } from 'polished'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Box } from '../../components/Box/Box'
 import { P } from '../../components/P/P'
 import { theme } from '../../styles/theme'
-
 import Signup from './Signup'
 import Login from './Login'
 
@@ -27,7 +26,13 @@ const LogSign = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   return (
-    <motion.div>
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={theme.framerVar.scaleFadeInOut}
+      transition={theme.framerTrans.fastTrans}
+    >
       <Box width="70rem" align="center" color={theme.colors.lightGrey}>
         <Box direction="row" padding="0" justify="center" width="80%" margin="20px 0px 10px 0px">
           <StyledSwitch isActive={isLogin ? true : false} onClick={() => setIsLogin(true)}>
@@ -41,7 +46,9 @@ const LogSign = () => {
             </P>
           </StyledSwitch>
         </Box>
-        { isLogin ? <Login /> : <Signup /> }
+        <AnimatePresence exitBeforeEnter>
+          { isLogin ? <Login key="login" /> : <Signup key="signup" /> }
+        </AnimatePresence>
       </Box>
     </motion.div>
   )
