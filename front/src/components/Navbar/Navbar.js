@@ -48,13 +48,13 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <NavElement as={Link} to="/home">LOGOPLACE</NavElement>
+      <NavElement as={Link} to="/">LOGOPLACE</NavElement>
       <NavElement as={Link} to="/notes">Your Notes</NavElement>
       {
         loggedUser === null ? (
           <NavElement as={Link} to="/logsign" margin="0px 15px 0px 15px">Sign</NavElement>
         ) : (
-          <NavElement as={Link} to="/home" margin="0px 15px 0px 15px" onClick={handleLogout}>Logout</NavElement>
+          <NavElement as={Link} to="/" margin="0px 15px 0px 15px" onClick={handleLogout}>Logout</NavElement>
         )
       }
     </StyledNavbar>

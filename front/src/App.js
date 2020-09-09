@@ -27,13 +27,13 @@ const App = () => {
       <Navbar />
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
-          <Route path="/home">
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/logsign">
+          <Route exact path="/logsign">
             <LogSign />
           </Route>
-          <Route path="/notes">
+          <Route exact path="/notes">
             <Notes />
           </Route>
         </Switch>
