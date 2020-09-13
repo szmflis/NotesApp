@@ -8,7 +8,10 @@ import { P } from '../../components/P/P'
 import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
 import { setUser } from '../../reducers/user-reducer'
+import { setNotification } from '../../reducers/notification-reducer'
 import { Input, InputWrapper } from '../../components/Input/Input'
+import loginService from '../../services/login'
+import Notification from '../../components/Notification/Notification'
 
 const StyledWrapper = styled(motion.form)`
   display: flex;
@@ -23,9 +26,20 @@ const Login = () => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const handleLogin = ({ username, password }) => {
-    dispatch(setUser(username, password))
-    history.push('/notes')
+  const handleLogin = async ({ username, password }) => {
+    const user = await loginService.login({
+      username, password
+    })
+
+    if (user.error) {
+      dispatch(setNotification({
+        text: user.error,
+        type: 'error'
+      }))
+    } else {
+      dispatch(setUser(user))
+      history.push('/notes')
+    }
   }
 
   return (
@@ -63,6 +77,7 @@ const Login = () => {
           Log In!
         </P>
       </Button>
+      <Notification />
     </StyledWrapper>
   )
 }

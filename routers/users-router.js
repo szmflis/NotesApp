@@ -29,22 +29,24 @@ usersRouter.get('/user/:id/notes-ids', async (request, response) => {
 })
 
 usersRouter.post('/', async (request, response) => {
-    try {
-        const body = request.body
-        const saltRounds = 10
-        const passwordHash = await bcrypt.hash(body.password, saltRounds)
+  const body = request.body
+  const saltRounds = 10
+  const passwordHash = await bcrypt.hash(body.password, saltRounds)
 
-        const user = new User({
-            username: body.username,
-            name: body.name,
-            passwordHash
-        })
+  const user = new User({
+    username: body.username,
+    name: body.name,
+    passwordHash
+  })
 
-        const savedUser = await user.save()
-        response.json(savedUser.toJSON())
-    } catch (ex) {
-        console.log(ex.message)
-    }
+  try {
+    const savedUser = await user.save()
+    response.json(savedUser.toJSON())
+  } catch (exception) {
+    return response.status(400).json({
+      error: 'This username is already taken'
+    })
+  }
 })
 
 usersRouter.delete('/user/:id', async (request, response, next) => {

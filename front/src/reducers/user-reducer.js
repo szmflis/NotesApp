@@ -1,9 +1,4 @@
-import loginService from '../services/login'
-import noteService from '../services/notes'
-
-const initialState = null
-
-const userReducer = (state = initialState, action) => {
+const userReducer = (state = null, action) => {
   switch (action.type) {
     case 'SET_USER':
       return action.data
@@ -12,33 +7,17 @@ const userReducer = (state = initialState, action) => {
   }
 }
 
-export const setUser = (username, password) => {
-  return async dispatch => {
-    try {
-      const user = await loginService.login({
-        username, password
-      })
-      if (user) {
-        dispatch({
-          type: 'SET_USER',
-          data: user
-        })
-
-        window.localStorage.setItem(
-          'loggedUser', JSON.stringify(user)
-        )
-        noteService.setToken(user.token)
-      }
-    } catch (exception) {
-      console.log(exception)
+export const setUser = (user) => {
+  return dispatch => {
+    dispatch({
+      type: 'SET_USER',
+      data: user
+    })
+    if (user) {
+      window.localStorage.setItem(
+        'loggedUser', JSON.stringify(user)
+      )
     }
-  }
-}
-
-export const setUserFromMemory = (user) => {
-  return {
-    type: 'SET_USER',
-    data: user
   }
 }
 

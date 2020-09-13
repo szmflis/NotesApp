@@ -1,12 +1,6 @@
 import axios from 'axios'
 
-let token = null
-
 const baseUrl = '/api/notes'
-
-const setToken = newToken => {
-  token = `bearer ${newToken}`
-}
 
 export const loadUserNotes = async (id) => {
   const response = await axios.get(`/api/users/user/${id}/notes`)
@@ -51,5 +45,3 @@ export const editNote = async ({ noteId, newContent, headerAuth }) => {
   const response = await axios.put(url, bodyParams, config)
   return response.data
 }
-
-export default { setToken }

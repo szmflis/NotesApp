@@ -25,7 +25,6 @@ const Notes = () => {
   useEffect(() => {
     const fetchData = async () => {
       if (loggedUser !== null) {
-        console.log(loggedUser)
         const userData = await loadUserNotes(loggedUser.id)
         dispatch(initializeNotes(userData))
       }
@@ -57,18 +56,13 @@ const Notes = () => {
         <Box width="70rem" margin="0" padding="0" color={theme.colors.white}>
           <AnimatePresence>
             {
-                notes !== null || undefined ? (
-                  notes.map(note => <Note
-                    content={note.content}
-                    date={note.date}
-                    author={loggedUser !== null ? loggedUser.name : 'unlogged user'}
-                    key={note.id}
-                    id={note.id}
-                  />)
-                ) : (
-                  console.log('Notes not found')
-                  // TODO make error component
-                )
+              notes.map(note => <Note
+                content={note.content}
+                date={note.date}
+                author={loggedUser !== null ? loggedUser.name : 'unlogged user'}
+                key={note.id}
+                id={note.id}
+              />)
             }
           </AnimatePresence>
         </Box>

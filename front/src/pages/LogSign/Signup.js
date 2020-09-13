@@ -9,8 +9,10 @@ import { Button } from '../../components/Button/Button'
 import { theme } from '../../styles/theme'
 import registrationService from '../../services/users'
 import { setUser } from '../../reducers/user-reducer'
-
+import { setNotification } from '../../reducers/notification-reducer'
 import { Input, InputWrapper } from '../../components/Input/Input'
+import Notification from '../../components/Notification/Notification'
+import loginService from '../../services/login'
 
 const StyledWrapper = styled(motion.form)`
   display: flex;
@@ -27,8 +29,20 @@ const Signup = () => {
 
   const handleSignup = async ({ username, password, name }) => {
     const responseData = await registrationService.register({ username, password, name })
-    dispatch(setUser(responseData.username, password))
-    history.push('/notes')
+
+    if (responseData.error) {
+      dispatch(setNotification({
+        text: responseData.error,
+        type: 'error'
+      }))
+    } else {
+      const user = await loginService.login({
+        username: responseData.username,
+        password
+      })
+      dispatch(setUser(user))
+      history.push('/notes')
+    }
   }
 
   return (
@@ -80,7 +94,7 @@ const Signup = () => {
             },
           })}
         />
-        {errors.username && <P color={theme.colors.danger}>{errors.username.message}</P>}
+        {errors.name && <P color={theme.colors.danger}>{errors.name.message}</P>}
       </InputWrapper>
       <InputWrapper>
         <P>Password</P>
@@ -108,6 +122,7 @@ const Signup = () => {
           Sign Up!
         </P>
       </Button>
+      <Notification />
     </StyledWrapper>
   )
 }

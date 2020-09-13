@@ -2,10 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setUserFromMemory } from '../../reducers/user-reducer'
+import { setUser } from '../../reducers/user-reducer'
 import { initializeNotes } from '../../reducers/note-reducer'
 import { theme } from '../../styles/theme'
-import { Box } from '../Box/Box'
 
 const StyledNavbar = styled.nav`
   display: flex;
@@ -41,7 +40,7 @@ const Navbar = () => {
   const dispatch = useDispatch()
 
   const handleLogout = () => {
-    dispatch(setUserFromMemory(null))
+    dispatch(setUser(null))
     dispatch(initializeNotes([]))
     window.localStorage.removeItem('loggedUser')
   }

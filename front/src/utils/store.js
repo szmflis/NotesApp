@@ -4,10 +4,12 @@ import thunk from 'redux-thunk'
 
 import noteReducer from '../reducers/note-reducer'
 import userReducer from '../reducers/user-reducer'
+import notificationReducer from '../reducers/notification-reducer'
 
 const reducer = combineReducers({
   notes: noteReducer,
-  user: userReducer
+  user: userReducer,
+  notification: notificationReducer,
 })
 
 const store = createStore(
