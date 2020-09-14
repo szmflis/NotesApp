@@ -5,6 +5,7 @@ Made for practice with React and such.
 https://notesappsf98.herokuapp.com/
 
 Currently looks as intended only on desktop. 
+Frontend repository: https://github.com/szmflis/NotesApp_Client
 
 ###### Technologies used
 React, Redux, CSS on the frontend, Serverside Node.js with MongoDB
