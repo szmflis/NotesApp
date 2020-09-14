@@ -12,8 +12,7 @@
     "start": "node index.js",
     "start-prod": "cross-env NODE_ENV=production node index.js",
     "start-dev": "concurrently \"npm run start\" \"npm run front\"",
-    "build-front-linux": "cd ../NotesAppClient && npm run-script build && cd ../NotesApp && npm run start-prod",
-    "heroku-postbuild": "npm install --prefix ../NotesAppClient && npm run build --prefix ../NotesAppClient"
+    "build-front-linux": "cd ../NotesAppClient && npm run-script build && cd ../NotesApp && npm run start-prod"
   },
   "author": "szymsi",
   "license": "ISC",
