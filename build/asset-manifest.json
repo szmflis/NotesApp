@@ -1,30 +1,32 @@
 {
   "files": {
-    "main.js": "/static/js/main.167992a1.chunk.js",
-    "main.js.map": "/static/js/main.167992a1.chunk.js.map",
+    "main.js": "/static/js/main.aacb629e.chunk.js",
+    "main.js.map": "/static/js/main.aacb629e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.b75c2353.js",
     "runtime-main.js.map": "/static/js/runtime-main.b75c2353.js.map",
-    "static/css/2.ebfea0ed.chunk.css": "/static/css/2.ebfea0ed.chunk.css",
-    "static/js/2.649b04b9.chunk.js": "/static/js/2.649b04b9.chunk.js",
-    "static/js/2.649b04b9.chunk.js.map": "/static/js/2.649b04b9.chunk.js.map",
+    "static/css/2.8dbe6964.chunk.css": "/static/css/2.8dbe6964.chunk.css",
+    "static/js/2.99609c7f.chunk.js": "/static/js/2.99609c7f.chunk.js",
+    "static/js/2.99609c7f.chunk.js.map": "/static/js/2.99609c7f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.23d26d72b9bec3ac96cb8a9c4eb007d7.js": "/precache-manifest.23d26d72b9bec3ac96cb8a9c4eb007d7.js",
+    "precache-manifest.ea2c12b74f57226e3e6da66023ed0109.js": "/precache-manifest.ea2c12b74f57226e3e6da66023ed0109.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.ebfea0ed.chunk.css.map": "/static/css/2.ebfea0ed.chunk.css.map",
-    "static/js/2.649b04b9.chunk.js.LICENSE.txt": "/static/js/2.649b04b9.chunk.js.LICENSE.txt",
+    "static/css/2.8dbe6964.chunk.css.map": "/static/css/2.8dbe6964.chunk.css.map",
+    "static/js/2.99609c7f.chunk.js.LICENSE.txt": "/static/js/2.99609c7f.chunk.js.LICENSE.txt",
     "static/media/bin.svg": "/static/media/bin.650cdc57.svg",
     "static/media/css.svg": "/static/media/css.889449e3.svg",
     "static/media/html.svg": "/static/media/html.5e025b38.svg",
     "static/media/javascript.svg": "/static/media/javascript.f90e5178.svg",
-    "static/media/index.css": "/static/media/montserrat-latin-900italic.a8ec4957.woff",
+    "static/media/mont-bold.ttf": "/static/media/mont-bold.ade91f47.ttf",
+    "static/media/mont-light.ttf": "/static/media/mont-light.409c7f79.ttf",
+    "static/media/mont-regular.ttf": "/static/media/mont-regular.ee653992.ttf",
     "static/media/nodejs.svg": "/static/media/nodejs.705b987e.svg",
     "static/media/react.svg": "/static/media/react.4abe940d.svg",
     "static/media/workspace.jpg": "/static/media/workspace.0ae3fb17.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b75c2353.js",
-    "static/css/2.ebfea0ed.chunk.css",
-    "static/js/2.649b04b9.chunk.js",
-    "static/js/main.167992a1.chunk.js"
+    "static/css/2.8dbe6964.chunk.css",
+    "static/js/2.99609c7f.chunk.js",
+    "static/js/main.aacb629e.chunk.js"
   ]
 }
