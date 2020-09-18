@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "25a569a92a07c4ee75e99d2c7a9cb726",
+    "revision": "740ed1f87817d1f7be2b5110996f9b4f",
     "url": "/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.99609c7f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "71e92564bed825849596",
-    "url": "/static/js/main.aacb629e.chunk.js"
+    "revision": "c14b04b4219491e3cabf",
+    "url": "/static/js/main.a9570c5b.chunk.js"
   },
   {
     "revision": "98b568650369dc301c5b",
@@ -40,16 +40,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/javascript.f90e5178.svg"
   },
   {
-    "revision": "ade91f473255991f410f61857696434b",
-    "url": "/static/media/mont-bold.ade91f47.ttf"
+    "revision": "39d93cf678c740f9f6b2b1cfde34bee3",
+    "url": "/static/media/mont-bold.39d93cf6.woff2"
   },
   {
-    "revision": "409c7f79a42e56c785f50ed37535f0be",
-    "url": "/static/media/mont-light.409c7f79.ttf"
+    "revision": "7c3daf12b706645b5d3710f863a4da04",
+    "url": "/static/media/mont-light.7c3daf12.woff2"
   },
   {
-    "revision": "ee6539921d713482b8ccd4d0d23961bb",
-    "url": "/static/media/mont-regular.ee653992.ttf"
+    "revision": "bc3aa95dca08f5fee5291e34959c27bc",
+    "url": "/static/media/mont-regular.bc3aa95d.woff2"
   },
   {
     "revision": "705b987e58fa317cf913c181018040be",
