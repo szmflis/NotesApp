@@ -2,7 +2,7 @@
 
 Made for practice with React and such.
 
-https://notesappsf98.herokuapp.com/
+https://notesappsf98.netlify.app/
 
 Currently looks as intended only on desktop. 
 Frontend repository: https://github.com/szmflis/NotesApp_Client
