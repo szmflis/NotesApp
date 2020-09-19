@@ -14,7 +14,7 @@
     "start-prod": "npm run front_build && cross-env NODE_ENV=production node index.js",
     "start-dev": "concurrently \"npm run server_start\" \"npm run front_start\"",
     "deploy": "git push heroku master",
-    "deploy:full": "npm run front_build && git add . && git commit -m uibuild && npm run deploy"
+    "deploy:full": "git add . && git commit -m backendupdate && npm run deploy"
   },
   "author": "szymsi",
   "license": "ISC",
